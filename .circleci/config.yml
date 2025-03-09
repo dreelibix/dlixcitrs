@@ -7,14 +7,13 @@ jobs:
     steps:
       - checkout
       - run: cargo build --release
-      - run: ls target && ls target/release
       - run:
           name: Copy binary to artifacts
           command: |
             mkdir -p /tmp/artifacts/arm32v7;
-            cp target/release/dlixcitrs /tmp/artifacts/arm32v7;
+            cp target/release/dlixcitrs /tmp/artifacts/arm32v7/dlixcitrs;
       - store_artifacts:
-          path: /tmp/artifacts;
+          path: /tmp/artifacts
 workflows:
   build_and_test:
     jobs:
