@@ -15,3 +15,7 @@ jobs:
             cp target/release/dlixcitrs /tmp/artifacts/arm32v7;
       - store_artifacts:
           path: /tmp/artifacts;
+workflows:
+  build_and_test:
+    jobs:
+      - build-arm32
