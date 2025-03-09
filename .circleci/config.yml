@@ -1,0 +1,17 @@
+version: 2.1
+jobs:
+  build-arm32:
+    docker:
+      - image: arm32v7/rust:latest
+    resource_class: arm.medium
+    steps:
+      - checkout
+      - run: uname -a
+      - run: cargo build --release
+      - run:
+          name: Copy binary to artifacts
+          command: |
+            mkdir -p /tmp/artifacts/arm32v7;
+            cp target/release/dlixcitrs /tmp/artifacts/arm32v7;
+      - store_artifacts:
+          path: /tmp/artifacts;
