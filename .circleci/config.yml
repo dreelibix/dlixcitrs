@@ -6,8 +6,9 @@ jobs:
     resource_class: arm.medium
     steps:
       - checkout
-      - run: uname -a
+      - run: apt install tree -y
       - run: cargo build --release
+      - run: tree target
       - run:
           name: Copy binary to artifacts
           command: |
